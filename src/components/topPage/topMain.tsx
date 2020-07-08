@@ -1,4 +1,5 @@
 import React, { FC, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Pager from '@material-ui/core/Paper';
 import SerachIcon from '@material-ui/icons/Search';
@@ -26,12 +27,18 @@ const useStyle = makeStyles(() =>
 const TopMain: FC = () => {
   const classes = useStyle();
   const [keyword, setKeyword] = useState("");
+  const history = useHistory();
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(event.target.value);
   }
+  const handleSubmit = () => {
+    history.push("/search/" + keyword);
+  }
+
   return (
     <div className={classes.background}>
-      <Pager className={classes.pager}>
+      <Pager className={classes.pager} onSubmit={handleSubmit} component="form">
         <IconButton type="submit">
           <SerachIcon />
         </IconButton>
