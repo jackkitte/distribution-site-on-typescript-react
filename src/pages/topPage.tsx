@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import TopHeader from '../components/topPage/topHeader';
 import TopMain from '../components/topPage/topMain';
 import ResultPage from './resultPage';
+import DownloadPage from './downloadPage';
 import {
   BrowserRouter as Router,
   Switch,
@@ -18,6 +19,9 @@ const TopPage: FC = () => {
         </Route>
         <Route path="/search/:keyword" exact>
           <ResultPage />
+        </Route>
+        <Route path="/download/:keyword" exact>
+          <DownloadPage />
         </Route>
       </Switch>
     </Router>
